@@ -1,4 +1,4 @@
-# 🗼 Torres de Hanoi
+# 🏯 Torres de Hanoi
 
 Proyecto de Java — Juego interactivo de las Torres de Hanoi desarrollado por [Ximena López](https://github.com/Lincex135)
 
