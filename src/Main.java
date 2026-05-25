@@ -14,25 +14,67 @@ public class Main {
             System.out.println("¿Qué deseas hacer?");
             System.out.println("1 - Nueva partida");
             System.out.println("2 - Salir");
-            menuPrincipal = Integer.parseInt(teclado.nextLine());
+
+            // EXCEPCIÓN 1: Menú principal
+            try {
+                menuPrincipal = Integer.parseInt(teclado.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("¡Cuidado! Debes introducir un número.");
+                menuPrincipal = -1;
+            }
+
             switch (menuPrincipal) {
                 case 1:
                     System.out.println("¿Con cuántos discos deseas jugar?");
-                    Partida partida = new Partida(Integer.parseInt(teclado.nextLine()));
+
+                    // EXCEPCIÓN 2: Número de discos
+                    int numDiscos;
+                    try {
+                        numDiscos = Integer.parseInt(teclado.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("¡Cuidado! Debes introducir un número.");
+                        break;
+                    }
+                    Partida partida = new Partida(numDiscos);
 
                     int menuPartida;
                     do {
                         partida.dibujarPartida();
                         System.out.println("1- Realizar un movimiento");
                         System.out.println("2- Abandonar la partida");
-                        menuPartida = Integer.parseInt(teclado.nextLine());
+
+                        // EXCEPCIÓN 3: Menú de partida
+                        try {
+                            menuPartida = Integer.parseInt(teclado.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("¡Cuidado! Debes introducir un número.");
+                            menuPartida = -1;
+                        }
 
                         switch (menuPartida) {
                             case 1:
                                 System.out.println("¿Cuál es el poste de origen? (1-3):");
-                                int posteOrigen = Integer.parseInt(teclado.nextLine()) - 1;
+
+                                // EXCEPCIÓN 4: Poste de origen
+                                int posteOrigen;
+                                try {
+                                    posteOrigen = Integer.parseInt(teclado.nextLine()) - 1;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("¡Cuidado! Debes introducir un número.");
+                                    break;
+                                }
+
                                 System.out.println("¿Cuál es el poste de destino?");
-                                int posteDestino = Integer.parseInt(teclado.nextLine()) - 1;
+
+                                // EXCEPCIÓN 5: Poste de destino
+                                int posteDestino;
+                                try {
+                                    posteDestino = Integer.parseInt(teclado.nextLine()) - 1;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("¡Cuidado! Debes introducir un número.");
+                                    break;
+                                }
+
                                 switch (partida.moverDisco(posteOrigen, posteDestino)) {
                                     case 0:
                                         System.out.println("Disco movido con éxito");
