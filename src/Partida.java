@@ -54,12 +54,44 @@ public class Partida {
     }
 
     public void dibujarPartida() {
-        System.out.println("Situación actual de la partida:");
-        System.out.println();
-        for (int i = 0; i < postes.size(); i++) {
-            System.out.println("Poste " + (i+1) + ":");
-            postes.get(i).dibujarPoste();
+        System.out.println("Situación actual de la partida:" + "\n");
+
+        int diametroMax = numDiscos * 2 + 1;
+        int anchoColumna = diametroMax + 4;
+        String separador = "   ";
+
+        // Filas de discos (de arriba hacia abajo)
+        for (int fila = 0; fila < numDiscos; fila++) {
+            for (int p = 0; p < postes.size(); p++) {
+                System.out.print(postes.get(p).getFilaComoTexto(fila, anchoColumna, numDiscos));
+                if (p < postes.size() - 1) {
+                    System.out.print(separador);
+                }
+            }
             System.out.println();
         }
+
+        // Fila de bases
+        for (int p = 0; p < postes.size(); p++) {
+            System.out.print(postes.get(p).getBaseComoTexto(anchoColumna, diametroMax));
+            if (p < postes.size() - 1) {
+                System.out.print(separador);
+            }
+        }
+        System.out.println();
+
+        // Numeración de postes
+        for (int p = 0; p < postes.size(); p++) {
+            int espacios = anchoColumna / 2;
+            String fila = " ".repeat(Math.max(0, espacios)) +
+                    (p + 1) +
+                    " ".repeat(Math.max(0, anchoColumna - espacios - 1));
+            System.out.print(fila);
+            if (p < postes.size() - 1) {
+                System.out.print(separador);
+            }
+        }
+        System.out.println();
+        System.out.println();
     }
 }

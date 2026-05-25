@@ -4,10 +4,21 @@ public class DiscoDePiedra extends Disco{
         super(diametro);
     }
 
-    public void dibujarDisco(){
+    public void dibujarDisco(int espacios, int anchoTotal) {
+        for (int i = 0; i < espacios; i++) {
+            System.out.print(" ");
+        }
         for (int i = 1; i <= diametro; i++) {
             System.out.print("@");
         }
-        System.out.println();
+        int espaciosDespues = anchoTotal - espacios - diametro;
+        for (int i = 0; i < espaciosDespues; i++) {
+            System.out.print(" ");
+        }
+    }
+
+    @Override
+    public String getSimbolo() {
+        return Color.GRAY + "@" + Color.RESET;
     }
 }

@@ -30,7 +30,24 @@ public class Disco {
         System.out.println();
     }
 
+    public void dibujarDisco(int espacios, int anchoTotal) {
+        for (int i = 0; i < espacios; i++) {
+            System.out.print(" ");
+        }
+        for (int i = 1; i <= diametro; i++) {
+            System.out.print("o");
+        }
+        int espaciosDespues = anchoTotal - espacios - diametro;
+        for (int i = 0; i < espaciosDespues; i++) {
+            System.out.print(" ");
+        }
+    }
+
     public int getDiametro() {
         return diametro;
+    }
+
+    public String getSimbolo() {
+        return "o";
     }
 }
